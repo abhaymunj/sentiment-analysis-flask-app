@@ -105,4 +105,4 @@ if __name__ == '__main__':
     model = joblib.load('nb_clf.pkl')
     count_vectorizer = joblib.load('count_vect.pkl')
     # Switch debug to False in production
-    app.run(debug=True, port=5001)
+    app.run(debug=False)
