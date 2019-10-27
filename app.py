@@ -11,6 +11,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+# load Pickle objects for the model and vectorizer
+model = joblib.load('nb_clf.pkl')
+count_vectorizer = joblib.load('count_vect.pkl')
 
 # Stopwords to remove
 stopwords = ['and', 'this', 'that', 'are', 'us', 'we', 'he',
@@ -101,8 +104,5 @@ def predict_sentiment():
 
 
 if __name__ == '__main__':
-    # load Pickle objects for the model and vectorizer
-    model = joblib.load('nb_clf.pkl')
-    count_vectorizer = joblib.load('count_vect.pkl')
     # Switch debug to False in production
     app.run(debug=False)
