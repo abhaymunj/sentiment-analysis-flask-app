@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sentiment Analyzer</title>
+    <!-- Bootstrap 4 Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'index.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container main-page-wrapper">
+        <!-- Banner -->
+        <div class="banner">
+            <div class="banner-left">
+                <h1 class="banner-left-heading">Sentiment Analyzer</h1>
+                <p class="banner-left-text">Proof Of Concept</p>
+            </div>
+            <div class="banner-right">
+                <p class="banner-right-text">
+                    Opinion Mining - extract sentiment as positive or negative.
+                    <br> Classify text as subjective or objective.
+                    <br> <i>Trained on product and services reviews.</i>
+                </p>
+            </div>
+        </div>
+        <!-- Main area container beginning-->
+        <div class="main-area">
+            <!-- Form start -->
+            <div class="form-container">
+                <form class="form" action="\analyze_text" , method="POST">
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="{{ input_text_template }}" rows="10"
+                            name='input_text' autocomplete="off"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Analyze</button>
+                </form>
+            </div>
+            <!-- End of form area -->
+            <!-- Beginning of results-container -->
+            <div class="results-container">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="th-left">Sentiment</th>
+                            <th scope="col" class="th-right">Prediction Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sentiment-label" style="color: {{ tag_color }}">{{ sentiment_temp_label }}</td>
+                            <td class="sentiment-confidence" style="color: {{ tag_color }}">
+                                {{ sentiment_temp_confidence }}</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="th-left">Subjective | Objective</th>
+                            <th scope="col" class="th-right">Subjectivity Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sentiment-label" style="color: dodgerblue">{{ subjectivity_label }}</td>
+                            <td class="sentiment-confidence" style="color: dodgerblue">{{ subjectivity_level }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- End of table -->
+            </div>
+            <!-- End of results container -->
+        </div>
+        <!-- End of main area -->
+
+    </div>
+
+    <!-- Bootstrap 4 Javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
